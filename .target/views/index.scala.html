@@ -1,0 +1,11 @@
+@linkUsers = @{routes.UserController.users()} 
+@linkProducts = @{routes.ProductController.products()}
+@linkOrderProducts = @{routes.OrderProductController.orderProducts()} 
+
+
+@main("Home") {
+    
+    <h1><a href=@linkUsers>Users</a></h1>
+    <h1><a href=@linkProducts>Products</a></h1>
+    <h1><a href=@linkOrderProducts>OrderProducts</a></h1>
+}

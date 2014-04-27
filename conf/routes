@@ -1,0 +1,35 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Users
+GET     /users                      controllers.UserController.users()
+POST    /users                      controllers.UserController.newUser()
+POST    /users/:id/delete           controllers.UserController.deleteUser(id: Long)
+
+# Products
+GET			/products      							controllers.ProductController.products()
+POST    /products                   controllers.ProductController.newProduct()
+POST    /products/:id/delete        controllers.ProductController.deleteProduct(id: Long)
+
+# OrderProducts
+POST    /orderproduct/:id/increase	controllers.OrderProductController.increaseQuantity(id: Long)
+POST    /orderproduct/:id/decrease	controllers.OrderProductController.decreaseQuantity(id: Long)
+POST    /orderproduct/:id/delete    controllers.OrderProductController.deleteOrderProduct(id: Long)
+
+# UserOrder
+GET			/userorder/:id      				controllers.UserOrderController.userOrder(id: Long)
+POST    /userorder/new           		controllers.UserOrderController.newUserOrder()
+POST    /userorder/:id/newop			  controllers.OrderProductController.newOrderProduct(id:Long)
+
+# UserOrderList
+GET			/user/:id										controllers.UserController.user(id: Long)
+
+# GlobalOrder
+GET			/globalorderlist						controllers.GlobalOrderController.globalOrderList()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

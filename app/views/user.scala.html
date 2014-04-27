@@ -1,0 +1,32 @@
+@(users: List[User], userForm: Form[User])
+
+@import helper._
+
+@main("User list") {
+    
+    <h1>@users.size() user(s)</h1>
+    
+    <ul>
+        @for(user <- users) {
+            <li>
+				@user.id
+                @user.name
+                
+                @form(routes.UserController.deleteUser(user.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+    
+    <h2>Add a new user</h2>
+    
+    @form(routes.UserController.newUser()) {
+        
+        @inputText(userForm("name")) 
+        
+        <input type="submit" value="Create">
+        
+    }
+    
+}

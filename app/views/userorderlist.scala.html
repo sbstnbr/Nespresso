@@ -1,0 +1,31 @@
+@(user:User)
+
+@import helper._
+
+@main("UserOrder list") {
+
+<div class="row">        
+	<div class="page-header"><h1>UserOrders</h1></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+    	@user.name
+    </div>
+    
+    <div class="col-md-8">
+    	
+        <ul>
+    	@for(userOrder<-user.userOrderList){
+    		<li>@userOrder.id @userOrder.getPrice()                 
+            @form(routes.UserOrderController.userOrder(userOrder.id)) {
+            <button type="submit"><span class="glyphicon glyphicon-cog"></span></button>
+            }
+            </li>
+    	}
+        </ul>
+
+    </div>
+</div>	    
+
+}

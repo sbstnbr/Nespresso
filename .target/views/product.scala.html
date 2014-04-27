@@ -1,0 +1,35 @@
+@(products: List[Product], productForm: Form[Product])
+
+@import helper._
+
+@main("Product list") {
+    
+    <h1>@products.size() product(s)</h1>
+    
+    <ul>
+        @for(product <- products) {
+            <li>
+				@product.id
+                @product.name
+                @product.intensity
+                @product.price
+                
+                @form(routes.ProductController.deleteProduct(product.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+    
+    <h2>Add a new product</h2>
+    
+    @form(routes.ProductController.newProduct()) {
+        
+        @inputText(field = productForm("name"), args = 'size -> 30, 'placeholder -> "Nom")
+        @inputText(field = productForm("intensity"), args = 'size -> 10, 'placeholder -> "Intensité")
+        @inputText(field = productForm("price"), args = 'size -> 10, 'placeholder -> "Prix")
+        <input type="submit" value="Create">
+        
+    }
+    
+}

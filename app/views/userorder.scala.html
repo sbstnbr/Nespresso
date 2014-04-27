@@ -1,0 +1,51 @@
+@(userOrder: UserOrder, userOrderForm: Form[UserOrder], productList: List[Product])
+
+@import helper._
+
+@main("UserOrder list") {
+
+<div class="row">        
+	<div class="page-header"><h1>UserOrder</h1></div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <li>@userOrder.id @userOrder.date @userOrder.paid @userOrder.getPrice()</li>
+            <ul>     
+                @for(orderProduct <- userOrder.orderProductList){
+                <li>@orderProduct.id @orderProduct.quantity @orderProduct.product.name</li>
+                @form(routes.OrderProductController.increaseQuantity(orderProduct.id), 'class -> "orderProductControl") {
+                <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                }
+                @form(routes.OrderProductController.decreaseQuantity(orderProduct.id), 'class -> "orderProductControl") {
+                <button type="submit"><span class="glyphicon glyphicon-minus"></span></button>
+                }
+                @form(routes.OrderProductController.deleteOrderProduct(orderProduct.id)) {
+                <button type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+                }
+                }
+            </ul>
+    </div>
+    
+
+    <div class="col-md-8">
+        
+        <ul>
+        
+        @for(product <- productList){
+            <li> @product.id @product.name @product.intensity @product.price Eur
+            @form(routes.OrderProductController.newOrderProduct(userOrder.id)) {
+                <input type="hidden" value="@product.id" name="product.id"/>
+                <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            }
+            </li>
+        }    
+
+        </ul>
+
+
+    </div>
+</div>	    
+
+}
