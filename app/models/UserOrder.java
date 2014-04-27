@@ -50,5 +50,25 @@ public class UserOrder extends Model {
     }
     return price;
   }
+
+  public int getQuantity(){
+    int quantity = 0;
+    Iterator<OrderProduct> iterator = orderProductList.iterator();
+    while (iterator.hasNext()){
+      quantity += iterator.next().quantity;
+    }
+    return quantity;
+  }
+
+  public int getStatus(){
+    int status = 2;
+    int globalOrderStatus = this.globalOrder.status;
+    if(globalOrderStatus==0){
+      status=0;
+    } else if ((globalOrderStatus==1||globalOrderStatus==2)&&this.paid==false){
+      status=1;
+    }
+    return status;
+  }
     
 }

@@ -36,5 +36,16 @@ public class User extends Model {
   public static void delete(Long id) {
     find.ref(id).delete();
   }
+
+  public int getNbUserOrderByStatus(int status){
+    int nb = 0;
+    Iterator<UserOrder> iterator = userOrderList.iterator();
+    while (iterator.hasNext()){
+      if(iterator.next().getStatus()==status){
+        nb++;
+      }
+    }
+    return nb;
+  }
     
 }

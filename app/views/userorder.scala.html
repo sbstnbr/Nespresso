@@ -11,7 +11,24 @@
 <div class="row">
     <div class="col-md-4">
         
-        <li>@userOrder.id @userOrder.date @userOrder.paid @userOrder.getPrice()</li>
+        <h2>@userOrder.user.name</h2>
+
+        <ul>
+            <li>@userOrder.id</li>
+            <li>@userOrder.date</li> 
+            <li>Paid: @userOrder.paid</li>
+            <li>Nb Capsules: @userOrder.getQuantity()</li> 
+            <li>Price: @userOrder.getPrice()</li>
+            <li>Status: @userOrder.getStatus()</li>
+        </ul>    
+
+
+    </div>
+    
+
+    <div class="col-md-8">
+        
+        <div class="row">
             <ul>     
                 @for(orderProduct <- userOrder.orderProductList){
                 <li>@orderProduct.id @orderProduct.quantity @orderProduct.product.name</li>
@@ -26,24 +43,19 @@
                 }
                 }
             </ul>
-    </div>
-    
-
-    <div class="col-md-8">
-        
-        <ul>
-        
-        @for(product <- productList){
-            <li> @product.id @product.name @product.intensity @product.price Eur
-            @form(routes.OrderProductController.newOrderProduct(userOrder.id)) {
-                <input type="hidden" value="@product.id" name="product.id"/>
-                <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-            }
-            </li>
-        }    
-
-        </ul>
-
+        </div>
+        <div class="row">
+            <ul>
+            @for(product <- productList){
+                <li> @product.id @product.name @product.intensity @product.price Eur
+                @form(routes.OrderProductController.newOrderProduct(userOrder.id)) {
+                    <input type="hidden" value="@product.id" name="product.id"/>
+                    <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+                }
+                </li>
+            }    
+            </ul>
+        </div>
 
     </div>
 </div>	    

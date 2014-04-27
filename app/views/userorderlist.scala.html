@@ -10,14 +10,24 @@
 
 <div class="row">
     <div class="col-md-4">
-    	@user.name
+        <h2>@user.name</h2>
+
+        <ul>
+            <li>@user.userOrderList.size() userOrders</li>
+            <ul>
+                @for(status <- 0 to 2){
+                <li>Nb UserOrder with status @status @user.getNbUserOrderByStatus(status)</li>
+                }
+            </ul>
+            <li>TODO: Create new userOrder
+        </ul>   
     </div>
     
     <div class="col-md-8">
     	
         <ul>
     	@for(userOrder<-user.userOrderList){
-    		<li>@userOrder.id @userOrder.getPrice()                 
+    		<li>@userOrder.id @userOrder.date @userOrder.getQuantity() capsules @userOrder.getPrice() Euros @userOrder.paid                 
             @form(routes.UserOrderController.userOrder(userOrder.id)) {
             <button type="submit"><span class="glyphicon glyphicon-cog"></span></button>
             }
