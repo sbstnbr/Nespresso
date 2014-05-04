@@ -4,8 +4,12 @@
 
 @main("UserOrder list") {
 
+
 <div class="row">        
-	<div class="page-header"><h1>UserOrders</h1></div>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="#">Commandes</a></li>
+        <li><a href='/globalorderlist'>Admin</a></li>
+    </ul>
 </div>
 
 <div class="row">
@@ -19,7 +23,12 @@
                 <li>Nb UserOrder with status @status @user.getNbUserOrderByStatus(status)</li>
                 }
             </ul>
-            <li>TODO: Create new userOrder
+            <li>
+            @form(routes.UserOrderController.newUserOrder()){
+            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            }
+            </li>
+
         </ul>   
     </div>
     

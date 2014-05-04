@@ -1,12 +1,14 @@
-@(userOrder: UserOrder, userOrderForm: Form[UserOrder], productList: List[Product])
+@(userOrder: UserOrder, productList: List[Product])
 
 @import helper._
 
 @main("UserOrder list") {
 
 <div class="row">        
-	<div class="page-header"><h1>UserOrder</h1></div>
-</div>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="/user/1">Commandes</a></li>
+        <li><a href="/globalorderlist">Admin</a></li>
+    </ul></div>
 
 <div class="row">
     <div class="col-md-4">
@@ -30,6 +32,7 @@
         
         <div class="row">
             <ul>     
+            @if(userOrder.orderProductList.size()>0){
                 @for(orderProduct <- userOrder.orderProductList){
                 <li>@orderProduct.id @orderProduct.quantity @orderProduct.product.name</li>
                 @form(routes.OrderProductController.increaseQuantity(orderProduct.id), 'class -> "orderProductControl") {
@@ -42,6 +45,7 @@
                 <button type="submit"><span class="glyphicon glyphicon-remove"></span></button>
                 }
                 }
+            }
             </ul>
         </div>
         <div class="row">

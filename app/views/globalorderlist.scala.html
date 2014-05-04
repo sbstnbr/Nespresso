@@ -5,7 +5,10 @@
 @main("Global Order List") {
 
 <div class="row">        
-	<div class="page-header"><h1>Global Order List</h1></div>
+    <ul class="nav nav-pills">
+        <li><a href="/user/1">Commandes</a></li>
+        <li class="active"><a href="#">Admin</a></li>
+    </ul>
 </div>
 
 <div class="row">
@@ -17,7 +20,13 @@
                 @for(status <- 0 to 2){
                 <li>Nb GlobalOrder with status @status @GlobalOrder.getNbGlobalOrderByStatus(status)</li>
                 }
-            </ul>   	
+            </ul>   
+
+            <li>
+            @form(routes.GlobalOrderController.newGlobalOrder()){
+            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            }
+            </li>	
 
 
     </div>

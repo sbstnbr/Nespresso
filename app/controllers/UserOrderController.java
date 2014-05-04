@@ -14,41 +14,17 @@ public class UserOrderController extends Controller {
   public static Result userOrder(Long id) {
     id = 1L;
     return ok(
-      views.html.userorder.render(UserOrder.find.ref(id), userOrderForm, Product.all())
+      views.html.userorder.render(UserOrder.find.ref(id), Product.all())
     );
   }
 
   public static Result newUserOrder(){
-
-    return ok();
+    UserOrder userOrder = new UserOrder();
+    userOrder.user = User.find.ref(1L);
+    userOrder.globalOrder = GlobalOrder.find.ref(1L);
+    userOrder.save();
+    return ok(
+      views.html.userorder.render(userOrder, Product.all())
+    );
   } 
-
-    //   UserOrder userOrder = new UserOrder();
-    //   userOrder.quantity = 10;
-    //   userOrder.save();
-
-    //   OrderProduct orderProduct = new OrderProduct();
-    //   orderProduct.quantity = 10;
-    //   orderProduct.userOrder = userOrder;
-    //   orderProduct.save();
-
-    //   orderProduct = new OrderProduct();
-    //   orderProduct.quantity = 20;
-    //   orderProduct.userOrder = userOrder;
-    //   orderProduct.save();
-
-    //   List<OrderProduct> test = OrderProduct.findByUserOrder(Long.valueOf(1));
-      
-    //   for(int i = 0; i < test.size(); i++){
-    //     System.out.println((test.get(i).id));
-    //   }
-
-    //   Logger.debug("test");
-
-
-    // return ok(  
-    //   views.html.index.render()
-    // );
- // }
-
 } 
