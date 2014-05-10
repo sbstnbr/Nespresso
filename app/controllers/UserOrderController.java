@@ -12,7 +12,6 @@ public class UserOrderController extends Controller {
   static Form<UserOrder> userOrderForm = Form.form(UserOrder.class);
 
   public static Result userOrder(Long id) {
-    id = 1L;
     return ok(
       views.html.userorder.render(UserOrder.find.ref(id), Product.all())
     );

@@ -38,12 +38,6 @@ public class OrderProduct extends Model {
     find.ref(id).delete();
   }
 
-  public static List<OrderProduct> findByUserOrder(Long id) {
-        return OrderProduct.find.where()
-            .eq("userOrder.id", id)
-            .findList();
-  }
-
   public void increaseQuantity(){
     this.quantity = this.quantity + 10;
     this.save();

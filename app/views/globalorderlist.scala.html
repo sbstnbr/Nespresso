@@ -41,6 +41,12 @@
                 <li>End @globalOrder.end</li>
                 <li>Nb Cap @globalOrder.getQuantity()</li>
                 <li>Price @globalOrder.getPrice()</li>
+
+                <ul>
+                @for(userOrder<-globalOrder.userOrderList){
+                    <li>@userOrder.id @userOrder.user.name @userOrder.getPrice() @userOrder.paid</li>
+                }
+                </ul>
             </ul>
             }
         </ul>
