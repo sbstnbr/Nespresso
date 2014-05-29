@@ -1,0 +1,57 @@
+html, body {
+	height: 100%
+}
+
+.container, .main-row,.left-container, .right-container{
+	height: 100%;
+}
+
+.left-container, .right-container,.user-information, .userorder-list{
+	border: 1px dashed #ababab;
+}
+
+.left-container{
+	padding: 0 0 0 0 !important;
+	position: relative;	
+}
+
+.user-information{
+	height:200px;
+	background-color: red;
+}
+
+.userorder-list{
+	position: absolute;
+	top: 200px;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: green;
+	overflow-y: auto;
+}
+
+.uo-line{
+	clear:both;
+	line-height: 30px;
+	vertical-align: center;
+	padding: 0 5px 0 5px;
+}
+
+.uo-line-element{
+	float: left;
+	border: 1px dashed;
+}
+
+/*.uo-date{
+	width: 25%;
+	min-width: 
+}
+
+.uo-capsules{
+	width: 50%;
+}
+*/
+.uo-price{
+	float:right;
+	text-align: right;
+}
