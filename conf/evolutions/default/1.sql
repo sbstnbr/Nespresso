@@ -24,6 +24,8 @@ create table product (
   name                      varchar(255),
   price                     float,
   intensity                 integer,
+  pic                       varchar(255),
+  description               varchar(255),
   constraint pk_product primary key (id))
 ;
 
@@ -31,6 +33,7 @@ create table user (
   id                        bigint auto_increment not null,
   name                      varchar(255),
   is_admin                  tinyint(1) default 0,
+  pic                       varchar(255),
   constraint pk_user primary key (id))
 ;
 

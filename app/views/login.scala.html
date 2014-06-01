@@ -1,0 +1,30 @@
+@(loginForm: Form[Application.Login])
+
+@import helper._
+
+@main("Login") {
+
+    @form(routes.Application.authenticate) {
+        
+        <h1>Sign in</h1>
+        
+        @if(loginForm.hasGlobalErrors) { 
+            <p class="error">
+                @loginForm.globalError.message
+            </p>
+        }
+        
+        @if(flash.contains("success")) {
+            <p class="success">
+                @flash.get("success")
+            </p>
+        }
+        
+        @inputText(field = loginForm("name"), args = 'size -> 30, 'placeholder -> "Nom")
+
+        <button type="submit">Login</button>
+    }
+
+}
+
+

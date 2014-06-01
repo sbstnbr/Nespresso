@@ -1,7 +1,7 @@
-package models;
-
+package models; 
 import java.util.*;
 
+import play.Logger;
 import play.db.ebean.*;
 import play.data.validation.Constraints.*;
 
@@ -17,6 +17,8 @@ public class User extends Model {
   public String name;
 
   public boolean isAdmin;
+
+  public String pic;
 
   @OneToMany
   public List<UserOrder> userOrderList;
@@ -46,6 +48,13 @@ public class User extends Model {
       }
     }
     return nb;
+  }
+
+  public static User authenticate (String name) {
+    Logger.info("UserModel"+name);
+    return find.where()
+            .eq("name", name)
+            .findUnique();
   }
     
 }

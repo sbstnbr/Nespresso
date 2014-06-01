@@ -12,8 +12,7 @@ public class UserController extends Controller {
   static Form<User> userForm = Form.form(User.class);
 
   public static Result user(Long id) {
-   id = 1L;
-   return ok(
+    return ok(
       views.html.userorderlist.render(User.find.ref(id))
     );
   }

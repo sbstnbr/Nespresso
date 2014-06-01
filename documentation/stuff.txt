@@ -1,0 +1,17 @@
+Icons
+http://thenounproject.com/
+
+Design
+Theme forest
+Designmodo
+
+Authorisations
+https://github.com/schaloner/deadbolt-2
+
+Code
+codepen.io
+
+Font
+Lato
+
+JQuery AJAX (JSON)
