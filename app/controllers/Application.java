@@ -15,7 +15,7 @@ public class Application extends Controller {
     public String name;
     public String validate() {
       Logger.info("ApplicationLogin"+name);
-      if(User.authenticate(name) == null) {
+      if(User.findByName(name) == null) {
           return "Invalid user";
       }
       return null;
@@ -48,10 +48,10 @@ public class Application extends Controller {
       if(loginForm.hasErrors()) {
           return badRequest(login.render(loginForm));
       } else {
-          Long id = (Long)User.find.where().eq("name",loginForm.get().name).findIds().get(1);
-          session("id", id.toString());
+          String name = loginForm.get().name;
+          session("name", name);
           return redirect(
-              routes.UserController.user(id)
+              routes.UserController.user(name)
           );
       }
   }

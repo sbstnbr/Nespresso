@@ -50,8 +50,7 @@ public class User extends Model {
     return nb;
   }
 
-  public static User authenticate (String name) {
-    Logger.info("UserModel"+name);
+  public static User findByName(String name) {
     return find.where()
             .eq("name", name)
             .findUnique();

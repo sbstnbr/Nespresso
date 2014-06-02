@@ -1,7 +1,7 @@
 @linkUsers = @{routes.UserController.users()} 
 @linkProducts = @{routes.ProductController.products()}
 @linkUserOrder = @{routes.UserOrderController.userOrder(1L)}
-@linkUserOrderList = @{routes.UserController.user(1L)}
+@linkUserOrderList = @{routes.UserController.user("Joe Panda")}
 @linkGlobalOrderList = @{routes.GlobalOrderController.globalOrderList()}
 
 @main("Home") {

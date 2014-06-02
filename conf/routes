@@ -31,7 +31,7 @@ POST    /userorder/new           		controllers.UserOrderController.newUserOrder(
 POST    /userorder/:id/newop			  controllers.OrderProductController.newOrderProduct(id:Long)
 
 # UserOrderList
-GET			/user/:id										controllers.UserController.user(id:Long)
+GET			/user/:name									controllers.UserController.user(name:String)
 
 # GlobalOrder
 GET			/globalorderlist						controllers.GlobalOrderController.globalOrderList()
