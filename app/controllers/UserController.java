@@ -13,7 +13,7 @@ public class UserController extends Controller {
 
   public static Result user(String name) {
     return ok(
-      views.html.userorderlist.render(User.findByName(name))
+      views.html.user.render(User.findByName(name))
     );
   }
 }
