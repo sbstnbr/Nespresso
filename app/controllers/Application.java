@@ -22,13 +22,6 @@ public class Application extends Controller {
     }     
   }
 
-  public static Result index() {
-  	// To be removed
-  	return ok(	
-  		views.html.index.render()
-  	);
-  }
-
   /**
    * Login page.
    */

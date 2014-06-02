@@ -2,23 +2,13 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET     /                           controllers.Application.index()
-
 # Login page
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
 
-# Users
-GET     /users                      controllers.UserController.users()
-POST    /users                      controllers.UserController.newUser()
-POST    /users/:id/delete           controllers.UserController.deleteUser(id: Long)
-
-# Products
-GET			/products      							controllers.ProductController.products()
-POST    /products                   controllers.ProductController.newProduct()
-POST    /products/:id/delete        controllers.ProductController.deleteProduct(id: Long)
+# User
+GET			/user/:name									controllers.UserController.user(name:String)
 
 # OrderProducts
 POST    /orderproduct/:id/increase	controllers.OrderProductController.increaseQuantity(id: Long)
@@ -29,9 +19,6 @@ POST    /orderproduct/:id/delete    controllers.OrderProductController.deleteOrd
 GET			/userorder/:id      				controllers.UserOrderController.userOrder(id: Long)
 POST    /userorder/new           		controllers.UserOrderController.newUserOrder()
 POST    /userorder/:id/newop			  controllers.OrderProductController.newOrderProduct(id:Long)
-
-# UserOrderList
-GET			/user/:name									controllers.UserController.user(name:String)
 
 # GlobalOrder
 GET			/globalorderlist						controllers.GlobalOrderController.globalOrderList()
