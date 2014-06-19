@@ -12,8 +12,27 @@ html, body {
 
 .left-container, .right-container{
 	height: 100%;
+}
+
+.left-container, .right-container, .uo-line-element, .login-picture{
 	border: 1px dashed #ababab;
 }
+
+/* Login -----------------------------------------------------------*/
+
+.login-container{
+	height:600px;
+	width:70%
+}
+
+.login-panel{
+}
+
+.login-picture{
+	width: 200px;
+	margin:0 auto;
+}
+
 
 
 /* Left Container --------------------------------------------------*/
@@ -68,7 +87,6 @@ html, body {
 
 .uo-line-element{
 	float: left;
-	border: 1px dashed;
 }
 
 .uo-price{

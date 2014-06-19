@@ -35,7 +35,7 @@ public class Application extends Controller {
    * Handle login form submission.
    */
   public static Result authenticate() {
-      Form<Login> loginForm = form(Login.class).bindFromRequest("name");
+      Form<Login> loginForm = form(Login.class).bindFromRequest();
       Logger.info("ApplicationAuthenticate"+loginForm.toString());
       Logger.info("ApplicationAuthenticate"+loginForm.data().toString());
       if(loginForm.hasErrors()) {
