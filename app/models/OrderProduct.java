@@ -49,5 +49,8 @@ public class OrderProduct extends Model {
       this.save();
     }
   }
-    
+  
+  public float getPrice(){
+    return this.quantity * this.product.price;
+  }
 }

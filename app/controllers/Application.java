@@ -43,8 +43,9 @@ public class Application extends Controller {
       } else {
           String name = loginForm.get().name;
           session("name", name);
+          Logger.info(session("name"));
           return redirect(
-              routes.UserController.user(name)
+              routes.GlobalOrderController.globalOrderList()
           );
       }
   }

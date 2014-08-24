@@ -1,32 +1,41 @@
-
-# Users
-
 users:
-
     - !!models.User
         name:       Joe Panda
         isAdmin:    true
         pic:        panda
-    
     - !!models.User
         name:       Mac "Doggy" Dog
         isAdmin:    false
         pic:        dog
-    
     - !!models.User
-        name:       Wilfreed Raccon
+        name:       Wilfreed Raccoon
         isAdmin:    true
-        pic:        raccon
-    
-
-# GlobalOrder
+        pic:        raccoon
 
 globalOders:
-
     - !!models.GlobalOrder
         start:      2014-06-01
         end:        2014-10-01
         status:     0
+
+products:
+    - !!models.Product
+        name:       Arpeggio
+        intensity:  9
+        price:      3.5
+        pic:        arpeggio
+    - !!models.Product
+        name:       Ristretto
+        intensity:  10
+        price:      3.5
+        pic:        ristretto
+    - !!models.Product
+        name:       Kazaar
+        intensity:  12
+        price:      3.9
+        pic:        kazaar
+
+
 
 
 # projects:

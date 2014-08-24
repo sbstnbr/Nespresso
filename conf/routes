@@ -10,9 +10,6 @@ GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
 
-# User
-GET			/user/:name									controllers.UserController.user(name:String)
-
 # OrderProducts
 POST    /orderproduct/:id/increase	controllers.OrderProductController.increaseQuantity(id: Long)
 POST    /orderproduct/:id/decrease	controllers.OrderProductController.decreaseQuantity(id: Long)
@@ -20,7 +17,7 @@ POST    /orderproduct/:id/delete    controllers.OrderProductController.deleteOrd
 
 # UserOrder
 GET			/userorder/:id      				controllers.UserOrderController.userOrder(id: Long)
-POST    /userorder/new           		controllers.UserOrderController.newUserOrder()
+POST    /userorder/new/:goid     		controllers.UserOrderController.newUserOrder(goid: Long)
 POST    /userorder/:id/newop			  controllers.OrderProductController.newOrderProduct(id:Long)
 
 # GlobalOrder

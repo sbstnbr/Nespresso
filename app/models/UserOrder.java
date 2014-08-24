@@ -46,7 +46,7 @@ public class UserOrder extends Model {
   public float getPrice(){
     int price = 0;
     for (int i = 0; i<this.orderProductList.size();i++){
-      price += this.orderProductList.get(i).quantity * this.orderProductList.get(i).product.price;
+      price += this.orderProductList.get(i).getPrice();
     }
     return price;
   }

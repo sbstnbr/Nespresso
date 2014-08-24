@@ -1,4 +1,4 @@
-@(globalOrderList:List[GlobalOrder])
+@(globalOrderList:List[GlobalOrder],user:User)
 
 @import helper._
 
@@ -6,52 +6,46 @@
 
 <div class="row">        
     <ul class="nav nav-pills">
-        <li><a href="/user/1">Commandes</a></li>
         <li class="active"><a href="#">Admin</a></li>
+        <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
 
+
 <div class="row">
-    <div class="col-md-4">
+    <h2>@session.get("name")<h2>
+</div>
 
+@for(globalOrder<-globalOrderList){
+<div class="row">
+    <ul>
+        <li>Commande @globalOrder.id</li>
         <ul>
-            <li>@globalOrderList.size() Orders</li>
-            <ul>
-                @for(status <- 0 to 2){
-                <li>Nb GlobalOrder with status @status @GlobalOrder.getNbGlobalOrderByStatus(status)</li>
+            <li>Start: @globalOrder.start</li>
+            <li>End: @globalOrder.end</li>
+            <li>Nb Cap: @globalOrder.getQuantity()</li>
+            <li>Price: @globalOrder.getPrice()</li>
+            <li>Orders: @globalOrder.userOrderList.size()
+            <ul>   
+            @for(userOrder<-globalOrder.userOrderList){
+            <li>@userOrder.id @userOrder.user.name @userOrder.getPrice() @userOrder.paid
+                @form(routes.UserOrderController.userOrder(userOrder.id)) {
+                <button type="submit"><span class="glyphicon glyphicon-cog"></span></button>
                 }
-            </ul>   
-
+            </li>
+            }
             <li>
-            @form(routes.GlobalOrderController.newGlobalOrder()){
-            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-            }
-            </li>	
-
-
-    </div>
-    
-    <div class="col-md-8">
-
-        <ul>
-            @for(globalOrder<-globalOrderList){
-            <li>@globalOrder.id</li>
-            <ul>
-                <li>Start @globalOrder.start</li>
-                <li>End @globalOrder.end</li>
-                <li>Nb Cap @globalOrder.getQuantity()</li>
-                <li>Price @globalOrder.getPrice()</li>
-
-                <ul>
-                @for(userOrder<-globalOrder.userOrderList){
-                    <li>@userOrder.id @userOrder.user.name @userOrder.getPrice() @userOrder.paid</li>
+                @form(routes.UserOrderController.newUserOrder(globalOrder.id)) {
+                <button type="submit">Join</button>
                 }
-                </ul>
             </ul>
-            }
         </ul>
-
-    </div>
-</div>	    
-
+    </ul>
+</div>    
+}
+<!--<div class='row'>
+    @form(routes.GlobalOrderController.newGlobalOrder()){
+    <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+    }
+</div>-->
 }

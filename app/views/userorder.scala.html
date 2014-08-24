@@ -6,63 +6,58 @@
 
 <div class="row">        
     <ul class="nav nav-pills">
-        <li class="active"><a href="/user/1">Commandes</a></li>
-        <li><a href="/globalorderlist">Administrateur</a></li>
+        <li><a href="/globalorderlist">Home</a></li>
         <li><a href="/logout">Logout</a></li>
     </ul>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
+    <h2>@session.get("name")</h2>
+</div>
+
+<div class="row">
+    <ul>
+        <li>Global Order Status: @userOrder.globalOrder.status</li>
+        <li>Global Order Date: @userOrder.globalOrder.end</li>
+        <li>Nb Capsules: @userOrder.getQuantity()</li> 
+        <li>Price: @userOrder.getPrice()</li>
+        <li>Paid: @userOrder.paid</li>
+    </ul>  
+
+<div class="row">
+    <div class="col-md-8">
         
-        <h2>@userOrder.user.name</h2>
-
         <ul>
-            <li>@userOrder.id</li>
-            <li>@userOrder.date</li> 
-            <li>Paid: @userOrder.paid</li>
-            <li>Nb Capsules: @userOrder.getQuantity()</li> 
-            <li>Price: @userOrder.getPrice()</li>
-            <li>Status: @userOrder.getStatus()</li>
-        </ul>    
-
-
+        @for(product <- productList){
+            <li> @product.id @product.name @product.intensity @product.price Eur
+            @form(routes.OrderProductController.newOrderProduct(userOrder.id)) {
+                <input type="hidden" value="@product.id" name="product.id"/>
+                <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
+            }
+            </li>
+        }    
+        </ul> 
     </div>
     
 
-    <div class="col-md-8">
-        
-        <div class="row">
-            <ul>     
-            @if(userOrder.orderProductList.size()>0){
-                @for(orderProduct <- userOrder.orderProductList){
-                <li>@orderProduct.id @orderProduct.quantity @orderProduct.product.name</li>
-                @form(routes.OrderProductController.increaseQuantity(orderProduct.id), 'class -> "orderProductControl") {
-                <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                }
-                @form(routes.OrderProductController.decreaseQuantity(orderProduct.id), 'class -> "orderProductControl") {
-                <button type="submit"><span class="glyphicon glyphicon-minus"></span></button>
-                }
-                @form(routes.OrderProductController.deleteOrderProduct(orderProduct.id)) {
-                <button type="submit"><span class="glyphicon glyphicon-remove"></span></button>
-                }
-                }
+    <div class="col-md-4">        
+        <ul>     
+        @if(userOrder.orderProductList.size()>0){
+            @for(orderProduct <- userOrder.orderProductList){
+            <li>@orderProduct.id @orderProduct.quantity @orderProduct.product.name @orderProduct.getPrice() €</li>
+            @form(routes.OrderProductController.increaseQuantity(orderProduct.id), 'class -> "orderProductControl") {
+            <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
             }
-            </ul>
-        </div>
-        <div class="row">
-            <ul>
-            @for(product <- productList){
-                <li> @product.id @product.name @product.intensity @product.price Eur
-                @form(routes.OrderProductController.newOrderProduct(userOrder.id)) {
-                    <input type="hidden" value="@product.id" name="product.id"/>
-                    <button type="submit"><span class="glyphicon glyphicon-plus"></span></button>
-                }
-                </li>
-            }    
-            </ul>
-        </div>
-
+            @form(routes.OrderProductController.decreaseQuantity(orderProduct.id), 'class -> "orderProductControl") {
+            <button type="submit"><span class="glyphicon glyphicon-minus"></span></button>
+            }
+            @form(routes.OrderProductController.deleteOrderProduct(orderProduct.id)) {
+            <button type="submit"><span class="glyphicon glyphicon-remove"></span></button>
+            }
+            }
+        }
+        </ul>
+    
     </div>
 </div>	    
 

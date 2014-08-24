@@ -13,7 +13,7 @@ public class GlobalOrderController extends Controller {
 
   public static Result globalOrderList() {
     return ok(
-      views.html.globalorderlist.render(GlobalOrder.all())
+      views.html.globalorderlist.render(GlobalOrder.all(),User.findByName(session("name")))
     );
   }
 
