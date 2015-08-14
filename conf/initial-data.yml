@@ -4,19 +4,13 @@ users:
         isAdmin:    true
         pic:        panda
     - !!models.User
-        name:       Mac "Doggy" Dog
+        name:       Mac Dog
         isAdmin:    false
         pic:        dog
     - !!models.User
         name:       Wilfreed Raccoon
         isAdmin:    true
         pic:        raccoon
-
-globalOders:
-    - !!models.GlobalOrder
-        start:      2014-06-01
-        end:        2014-10-01
-        status:     0
 
 products:
     - !!models.Product
@@ -35,7 +29,24 @@ products:
         price:      3.9
         pic:        kazaar
 
+# globalOders:
+    # - !!models.GlobalOrder
+    #     start:      2014-06-01
+    #     end:        2014-10-01
+    #     status:     0
+    # - !!models.GlobalOrder
+    #     start:      2014-06-01
+    #     end:        2014-10-01
+    #     status:     0
 
+userOrders:
+    - !!models.UserOrder
+        date:       2015-08-12
+        paid:       false
+        user: !!models.User
+            id: 4
+        globalOrder: !!models.GlobalOrder
+            id: 1
 
 
 # projects:
